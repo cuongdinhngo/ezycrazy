@@ -24,7 +24,7 @@ return [
     'storage' => [
         'local' => [
             'driver' => 'local',
-            'path' => 'storage',
+            'path' => 'public',
         ],
         's3' => [
             'driver' => 's3',
