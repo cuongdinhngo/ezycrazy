@@ -32,7 +32,7 @@ docker-compose up -d
 <pre>
 composer install
 </pre>
-- Set up database by importing `users.sql` in `storage/sql`
+- Set up database by importing `users.sql` at `storage/sql` folder
 - Go to browser with below url and Enjoy it
 <pre>
 http://127.0.0.1:9020/admin
