@@ -16,7 +16,7 @@
     "require": {
         "php": "^7.0",
         "predis/predis": "~1.1.1",
-        "cuongnd88/atom": "v1.0.0.4"
+        "cuongnd88/atom": "1.0.4"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.1"

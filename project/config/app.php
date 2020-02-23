@@ -8,9 +8,9 @@ return [
      */
     'auth' => [
         'table' => 'users',
-        'guard' => 'username,password',
+        'guard' => 'email,password',
         'response' => [
-            'fail' => '/login',
+            'fail' => '/admin',
             'error' => 'Please try again!',
             'success' => '/users'
         ],

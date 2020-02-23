@@ -2,10 +2,11 @@
 
 return [
     'users' => [
-        'firstname' => 'First Name',
-        'lastname' => 'Last Name',
+        'fullname' => 'Fullname',
         'email' => 'Email',
-        'username' => 'Username',
-        'password' => 'Password'
+        'password' => 'Password',
+        'photo' => 'Photo',
+        'gender' => 'Gender',
+        'thumb' => 'Thumb',
     ],
 ];
