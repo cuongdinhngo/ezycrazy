@@ -28,7 +28,7 @@ try {
 <pre>
 docker-compose up -d
 </pre>
-- In virtual machine, you need to install [composer] (https://getcomposer.org/download/) and then execute:
+- In virtual machine, you need to install [composer](https://getcomposer.org/download/) and then execute:
 <pre>
 composer install
 </pre>
