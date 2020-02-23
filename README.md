@@ -41,7 +41,7 @@ http://127.0.0.1:9020/admin
 MEMO
 ====
 #### New Route
-* Based on your works, you can add new route into `api` or `web` file at Routers folder
+* Based on your works, you can add new route into `api` or `web` file at `Routers` folder.
 Atom framework verifies api by prefix url (ex: http://127.0.0.1:9020/api/users) or header value (ex: Content-Type:application/json)
 
 #### New Controller
