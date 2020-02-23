@@ -5,7 +5,6 @@ Powered by Atom Framework
 - app: contains logic folders including Controllers, Models, Routes
 - public: contains unrestricted files such as photos, css, js
 - config: contains config files : env.inc, app.php, ...
-- controllers: contains all controller classes
 - resources: contains all view files.
 - storage: likes local storage to contain log, ...
 
