@@ -30,7 +30,7 @@
                                 <td><img src="'.$user["thumb"].'"/></td>
                                 <td>'.$user["email"].'</td>
                                 <td>
-                                    <form action="'.url('user/update/'.$user["id"]).'" method="post">
+                                    <form action="'.url('user/update/'.$user["id"]).'" method="get">
                                         <button type="submit" class="btn btn-outline-success">Update</button>
                                     </form>
                                     <form action="'.url('user/action/'.$user["id"]).'" method="get">
