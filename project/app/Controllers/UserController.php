@@ -17,9 +17,12 @@ use App\Models\User;
 
 class UserController extends BaseController
 {
-    public function __construct()
+    private $user;
+
+    public function __construct(User $user = null)
     {
         parent::__construct();
+        $this->user = $user ?? new User();
         Auth::check();
     }
 
@@ -93,10 +96,9 @@ class UserController extends BaseController
         //encryt password
         $request['password'] = Token::generate([$request['password']], env('SECRET_KEY'));
         //insert user
-        $user = new User();
-        $user->enableQueryLog();
-        $newUser = $user->insert($request);
-        Log::info($user->getQueryLog());
+        $this->user->enableQueryLog();
+        $newUser = $this->user->insert($request);
+        Log::info($this->user->getQueryLog());
 
         //insert successfully
         if ($newUser) {
@@ -110,10 +112,9 @@ class UserController extends BaseController
      */
     public function exportUsers()
     {
-        $user = new User();
-        $user->enableQueryLog();
-        $data = $user->select(['id', 'fullname', 'email', 'gender'])->get();
-        Log::debug($user->getQueryLog());
+        $this->user->enableQueryLog();
+        $data = $this->user->select(['id', 'fullname', 'email', 'gender'])->get();
+        Log::debug($this->user->getQueryLog());
         CSV::setHeader(['ID', 'Fullname', 'Email', 'Gender']);
         CSV::save('export_users', $data);
         return back();
@@ -140,12 +141,11 @@ class UserController extends BaseController
         $standardHeader = config('csv.users');
         $data = CSV::toArray($request['file'], $standardHeader);
 
-        $user = new User();
-        $user->enableQueryLog();
+        $this->user->enableQueryLog();
         foreach (array_chunk($data, 3) as $values) {
-            $user->insertMany($values);
+            $this->user->insertMany($values);
         }
-        Log::debug($user->getQueryLog());
+        Log::debug($this->user->getQueryLog());
 
         return Response::redirect('/users');
     }
@@ -188,10 +188,9 @@ class UserController extends BaseController
         $request = $this->transformRequest($request);
 
         //update user
-        $user = new User();
-        $user->enableQueryLog();
-        $updatedUser = $user->where(['id', $request['id']])->update($request);
-        Log::info($user->getQueryLog());
+        $this->user->enableQueryLog();
+        $updatedUser = $this->user->where(['id', $request['id']])->update($request);
+        Log::info($this->user->getQueryLog());
         Response::redirect('/users');
     }
 
