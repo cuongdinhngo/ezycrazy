@@ -14,15 +14,18 @@ use Atom\File\Image;
 use Atom\File\CSV;
 use Atom\Guard\Auth;
 use App\Models\User;
+use App\Models\TimeReport;
 
 class UserController extends BaseController
 {
     private $user;
+    private $timeReport;
 
-    public function __construct(User $user = null)
+    public function __construct(User $user, TimeReport $timeReport)
     {
         parent::__construct();
-        $this->user = $user ?? new User();
+        $this->user = $user;
+        $this->timeReport = $timeReport;
         Auth::check();
     }
 

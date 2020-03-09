@@ -1,5 +1,7 @@
 <?php
+
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../app/autoload.php';
 
 use Atom\Http\Server;
 

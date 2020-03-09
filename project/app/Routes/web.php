@@ -28,4 +28,12 @@ return [
         ['get' => 'UserController@importForm'],
         ['post' => 'UserController@importUsers'],
     ],
+    '/timereport' => [
+        ['get' => 'TimeReportController@createListForm'],
+        ['post' => 'TimeReportController@search'],
+    ],
+    '/timereport/create' => [
+        ['get' => 'TimeReportController@createForm'],
+        ['post' => 'TimeReportController@create'],
+    ],
 ];
