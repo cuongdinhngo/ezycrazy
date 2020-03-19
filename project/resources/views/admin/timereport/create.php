@@ -65,6 +65,4 @@ WebForm::checkError($workplaces);
             </form>
         </div>
     </div>
-    <script type="text/javascript" src="<?= assets('/js/timereport.js') ?>"></script>
-</body>
-</html>
+<?php view('admin.footer') ?>

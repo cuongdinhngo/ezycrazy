@@ -43,5 +43,4 @@ use App\Common\WebForm;
             </form>    
         </div>
     </div>
-</body>
-</html>
+<?php view('admin.footer') ?>

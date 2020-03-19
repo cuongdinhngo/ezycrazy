@@ -5,8 +5,10 @@ return [
         ['get' => 'UserController@exportUsers'],
     ],
     '/users' => [
+        'middleware' => ['first', 'second'],
         ['get' => 'UserController@list'],
-        ['post' => 'UserController@create']
+        ['post' => 'UserController@create'],
+        ['put' => 'UserController@put']
     ],
     '/user/action' => [
         ['get' => 'UserController@delete'],

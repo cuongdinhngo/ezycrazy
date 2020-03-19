@@ -6,8 +6,10 @@ use Atom\Http\Response;
 //List all workplaces
 $url = config('define.workplace.api.list_all');
 $header = config('define.workplace.header');
-$workplaces = (new CURL())->callApiByGet($url, $header);
+$curl = new CURL();
+$workplaces = $curl->callApiByGet($url, $header);
 WebForm::checkError($workplaces);
+
 ?>
 <?php view('admin.header') ?>
 <body id="">
@@ -54,5 +56,4 @@ WebForm::checkError($workplaces);
             ?>
         </div>
     </div>
-</body>
-</html>
+<?php view('admin.footer') ?>

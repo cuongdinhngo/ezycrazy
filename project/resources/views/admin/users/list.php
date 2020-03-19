@@ -45,5 +45,4 @@
             </table>            
         </div>
     </div>
-</body>
-</html>
+<?php view('admin.footer') ?>
