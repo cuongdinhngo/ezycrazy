@@ -9,7 +9,9 @@ class WebForm extends Globals
 {
     /**
      * Generate Radio Gender
-     * @param  string|null $checkedValue
+     *
+     * @param string|null $checkedValue Checked value
+     *
      * @return string
      */
     public static function radioGender(string $checkedValue = null)
@@ -27,9 +29,11 @@ class WebForm extends Globals
 
     /**
      * Generate Select Workplace
-     * @param  string $name
-     * @param  array $data
-     * @param  mixed $selected
+     *
+     * @param string $name     Name
+     * @param array  $data     Data
+     * @param mixed  $selected Selected value
+     *
      * @return string
      */
     protected function selectWorkplace($name, $data, $selected = null)
@@ -45,8 +49,10 @@ class WebForm extends Globals
 
     /**
      * Generate Select Year
-     * @param  string $name
-     * @param  mixed $selected
+     *
+     * @param string $name     Name
+     * @param mixed  $selected Selected value
+     *
      * @return string
      */
     protected function selectYear($name, $selected = null)
@@ -63,8 +69,10 @@ class WebForm extends Globals
 
     /**
      * Generate Select Month
-     * @param  string $name
-     * @param  mixed $selected
+     *
+     * @param string $name     Name
+     * @param mixed  $selected Selected value
+     *
      * @return string
      */
     protected function selectMonth($name, $selected = null)
@@ -81,8 +89,10 @@ class WebForm extends Globals
 
     /**
      * Generate Select Month
-     * @param  string $name
-     * @param  mixed $selected
+     *
+     * @param string $name     Name
+     * @param mixed  $selected Selected value
+     *
      * @return string
      */
     protected function selectDay($name, $selected = null)
@@ -99,8 +109,10 @@ class WebForm extends Globals
 
     /**
      * Show time reports table
-     * @param  array $data
-     * @param  array $workplaces
+     *
+     * @param array $data       Data
+     * @param array $workplaces Workplace
+     *
      * @return string
      */
     protected function showTimereportsTable($data, $workplaces)
@@ -108,7 +120,7 @@ class WebForm extends Globals
         $workplaceIds = array_column($workplaces, 'id');
         $table = '<table border="1"><tr><th>Date</th><th>Workplace name</th><th>Hours</th></tr>';
         foreach ($data as $value) {
-            $index = array_search($value["workplace_id"], $workplaceIds); 
+            $index = array_search($value["workplace_id"], $workplaceIds);
             $table .= '<tr>
                     <td>'.$value["date"].'</td>
                     <td>'.$workplaces[$index]['name'].'</td>
@@ -121,9 +133,12 @@ class WebForm extends Globals
     }
 
     /**
-     * Check Error 
-     * @param  array $data
-     * @return Exception
+     * Check Error
+     *
+     * @param array $data Data
+     *
+     * @return true
+     * @throws Exception
      */
     protected function checkError($data)
     {

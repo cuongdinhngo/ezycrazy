@@ -23,7 +23,7 @@ return [
         ['post' => 'User/UserController@update']
     ],
     '/admin' => [
-    	['get' => 'AdminController@admin'],
+        ['get' => 'AdminController@admin'],
         ['post' => 'AdminController@signIn'],
     ],
     '/import-users' => [

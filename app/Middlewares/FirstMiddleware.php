@@ -6,8 +6,13 @@ use Atom\File\Log;
 
 class FirstMiddleware
 {
+    /**
+     * Hanle Middleware
+     *
+     * @return void
+     */
     public function handle()
     {
-    	Log::info(__METHOD__);
+        Log::info(__METHOD__);
     }
 }

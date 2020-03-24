@@ -17,7 +17,6 @@ use Atom\Template\Template;
 use App\Models\User;
 use App\Models\TimeReport;
 
-
 class UserController extends BaseController
 {
     private $user;
@@ -25,6 +24,12 @@ class UserController extends BaseController
     private $log;
     private $template;
 
+    /**
+     * User Controller construct
+     *
+     * @param User       $user       User
+     * @param TimeReport $timeReport TimeReport
+     */
     public function __construct(User $user, TimeReport $timeReport)
     {
         parent::__construct();
@@ -34,47 +39,55 @@ class UserController extends BaseController
         $this->template = new Template();
     }
 
-    public function put()
+    /**
+     * Update
+     *
+     * @return json
+     */
+    public function update()
     {
         $request = $this->request->all();
         Log::info(__METHOD__);
         Log::info($request);
-        return Response::toJson($_SERVER);
+        return Response::toJson($request);
     }
 
     /**
      * Created User Form
-     * @return [type] [description]
+     *
+     * @return void
      */
     public function createForm()
     {
-        return include_view('admin.users.create');
+        return view('admin', 'admin.users.create');
     }
 
     /**
      * Delete User
-     * @return [type] [description]
+     *
+     * @return void
      */
     public function delete()
     {
         $request = $this->request->all();
-        $db = new Database();
-        $db->enableQueryLog();
-        $db->table('users')->where(['id', $request['id']])->delete();
-        $this->log->info($db->getQueryLog());
+        $database = new Database();
+        $database->enableQueryLog();
+        $database->table('users')->where(['id', $request['id']])->delete();
+        $this->log->info($database->getQueryLog());
         Response::redirect('/users');
     }
 
     /**
      * List all users
+     *
      * @return [type] [description]
      */
     public function list()
     {
-        $db = new Database();
-        $db->enableQueryLog();
-        $users = $db->table('users')->select(['id', 'fullname', 'email', 'thumb'])->where(['gender', '!=', 'other'])->get();
-        Log::info($db->getQueryLog());
+        $database = new Database();
+        $database->enableQueryLog();
+        $users = $database->table('users')->select(['id', 'fullname', 'email', 'thumb'])->where(['gender', '!=', 'other'])->get();
+        Log::info($database->getQueryLog());
 
         $users = array_map(function ($user) {
             $user['thumb'] = assets('/images/users/thumb/'.$user["thumb"]);
@@ -88,6 +101,7 @@ class UserController extends BaseController
 
     /**
      * Create new user
+     *
      * @return [type] [description]
      */
     public function create()
@@ -125,6 +139,7 @@ class UserController extends BaseController
 
     /**
      * Export users to CSV
+     *
      * @return [type] [description]
      */
     public function exportUsers()
@@ -139,6 +154,7 @@ class UserController extends BaseController
 
     /**
      * Show Imported Form
+     *
      * @return [type] [description]
      */
     public function importForm()
@@ -148,6 +164,7 @@ class UserController extends BaseController
 
     /**
      * Import users from CSV file
+     *
      * @return [type] [description]
      */
     public function importUsers()
@@ -169,16 +186,17 @@ class UserController extends BaseController
 
     /**
      * Show Updated User Form
+     *
      * @return [type] [description]
      */
     public function updateForm()
     {
         //Get request
         $request = $this->request->all();
-        $db = new Database();
-        $db->enableQueryLog();
-        $user = $db->table('users')->select()->where(['id', $request['id']])->first();
-        Log::info($db->getQueryLog());
+        $database = new Database();
+        $database->enableQueryLog();
+        $user = $database->table('users')->select()->where(['id', $request['id']])->first();
+        Log::info($database->getQueryLog());
         $template = [
             "header" => "admin.header",
             "content" => 'admin.users.update',
@@ -191,6 +209,7 @@ class UserController extends BaseController
 
     /**
      * Update user
+     *
      * @return [type] [description]
      */
     public function update()
@@ -213,14 +232,16 @@ class UserController extends BaseController
 
         //update user
         $this->user->enableQueryLog();
-        $updatedUser = $this->user->where(['id', $request['id']])->update($request);
+        $this->user->where(['id', $request['id']])->update($request);
         Log::info($this->user->getQueryLog());
         Response::redirect('/users');
     }
 
     /**
      * Transform Request
-     * @param  array  $request [description]
+     *
+     * @param array $request [description]
+     *
      * @return array
      */
     public function transformRequest(array $request)

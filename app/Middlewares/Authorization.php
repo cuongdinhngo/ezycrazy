@@ -7,6 +7,11 @@ use Atom\File\Log;
 
 class Authorization
 {
+    /**
+     * Handle Authorize
+     *
+     * @return void
+     */
     public function handle()
     {
         Log::info(__METHOD__);

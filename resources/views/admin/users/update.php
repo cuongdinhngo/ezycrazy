@@ -24,7 +24,7 @@ use App\Common\WebForm;
                     <div class="form-group">
                         <label for="photo">Gender</label>
                         <div class="form-check">
-                            <?php 
+                            <?php
                                 echo WebForm::radioGender($gender);
                                 echo $errors['gender'][0];
                             ?>

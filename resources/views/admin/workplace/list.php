@@ -46,10 +46,10 @@ WebForm::checkError($workplaces);
                 </table>
             </form>
             <?php
-                if ($data) {
-                    WebForm::checkError($data);
-                    print_r(WebForm::showTimereportsTable($data, $workplaces)); 
-                }
+            if ($data) {
+                WebForm::checkError($data);
+                print_r(WebForm::showTimereportsTable($data, $workplaces));
+            }
             ?>
         </div>
     </div>

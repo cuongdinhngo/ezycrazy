@@ -8,6 +8,11 @@ use Atom\File\Log;
 
 class PhpToJs
 {
+    /**
+     * Handle to transform PHP to Js
+     *
+     * @return void
+     */
     public function handle()
     {
         Log::info(__METHOD__);
