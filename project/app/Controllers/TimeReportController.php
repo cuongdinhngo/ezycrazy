@@ -31,7 +31,7 @@ class TimeReportController extends BaseController
     public function createListForm()
     {
         try {
-            return view('admin.workplace.list');
+            return view('admin', 'admin.workplace.list');
         } catch (\Exception $e) {
             print_r($e->getMessage());
             Log::error($e->getMessage());
@@ -45,7 +45,7 @@ class TimeReportController extends BaseController
     public function createForm()
     {
         try {
-            return view('admin.timereport.create');
+            return view('admin', 'admin.timereport.create');
         } catch (\Exception $e) {
             print_r($e->getMessage());
             Log::error(__METHOD__.' => '.$e->getMessage());
@@ -78,7 +78,7 @@ class TimeReportController extends BaseController
             $header = config('define.timereport.header');
             $data = $this->curl->callApiByGet($url, $header);
 
-            return view('admin.workplace.list', compact('data'));
+            return view('admin', 'admin.workplace.list', compact('data'));
         } catch (\Exception $e) {
             print_r($e->getMessage());
             Log::error($e->getMessage());

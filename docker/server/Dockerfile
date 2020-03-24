@@ -54,7 +54,12 @@ RUN apt-get update && apt-get install -y --allow-remove-essential \
         nano \
         nodejs \
         php7.2-gd \
-        npm
+        npm \
+    && apt-get clean
+
+# Install composer
+RUN curl -s http://getcomposer.org/installer | php \
+    && mv composer.phar /usr/local/bin/composer
 
 #Configure Nginx
 RUN apt-get -yqq update; apt-get -yqq install nginx

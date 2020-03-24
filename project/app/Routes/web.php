@@ -5,30 +5,30 @@ return [
         ['get' => 'UserController@exportUsers'],
     ],
     '/users' => [
-        'middleware' => ['first', 'second', 'auth', 'phpToJs'],
+        'middleware' => ['first', 'auth', 'second', 'phpToJs'],
         ['get' => 'User/UserController@list'],
         ['post' => 'User/UserController@create'],
         ['put' => 'User/UserController@put']
     ],
     '/user/action' => [
-        ['get' => 'UserController@delete'],
-        ['post' => 'UserController@update']
+        ['get' => 'User/UserController@delete'],
+        ['post' => 'User/UserController@update']
     ],
     '/user/create' => [
-        ['get' => 'UserController@createForm'],
-        ['post' => 'UserController@create']
+        ['get' => 'User/UserController@createForm'],
+        ['post' => 'User/UserController@create']
     ],
     '/user/update' => [
-        ['get' => 'UserController@updateForm'],
-        ['post' => 'UserController@update']
+        ['get' => 'User/UserController@updateForm'],
+        ['post' => 'User/UserController@update']
     ],
     '/admin' => [
     	['get' => 'AdminController@admin'],
         ['post' => 'AdminController@signIn'],
     ],
     '/import-users' => [
-        ['get' => 'UserController@importForm'],
-        ['post' => 'UserController@importUsers'],
+        ['get' => 'User/UserController@importForm'],
+        ['post' => 'User/UserController@importUsers'],
     ],
     '/timereport' => [
         ['get' => 'TimeReportController@createListForm'],

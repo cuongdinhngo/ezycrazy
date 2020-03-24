@@ -13,25 +13,32 @@ use Atom\File\Log;
 use Atom\File\Image;
 use Atom\File\CSV;
 use Atom\Guard\Auth;
+use Atom\Template\Template;
 use App\Models\User;
 use App\Models\TimeReport;
+
 
 class UserController extends BaseController
 {
     private $user;
     private $timeReport;
+    private $log;
+    private $template;
 
     public function __construct(User $user, TimeReport $timeReport)
     {
         parent::__construct();
         $this->user = $user;
         $this->timeReport = $timeReport;
-        Auth::check();
+        $this->log = new Log();
+        $this->template = new Template();
     }
 
     public function put()
     {
+        $request = $this->request->all();
         Log::info(__METHOD__);
+        Log::info($request);
         return Response::toJson($_SERVER);
     }
 
@@ -41,7 +48,7 @@ class UserController extends BaseController
      */
     public function createForm()
     {
-        return view('admin.users.create');
+        return include_view('admin.users.create');
     }
 
     /**
@@ -54,7 +61,7 @@ class UserController extends BaseController
         $db = new Database();
         $db->enableQueryLog();
         $db->table('users')->where(['id', $request['id']])->delete();
-        Log::info($db->getQueryLog());
+        $this->log->info($db->getQueryLog());
         Response::redirect('/users');
     }
 
@@ -76,7 +83,7 @@ class UserController extends BaseController
         if (isApi()) {
             return Response::toJson($users);
         }
-        return view('admin.users.list', compact('users'));
+        return view('admin', 'admin.users.list', compact('users'));
     }
 
     /**
@@ -96,8 +103,9 @@ class UserController extends BaseController
             'gender' => 'required|in_array:male,female',
         ];
         Validator::execute($request, $rules);
-        if (Validator::errors()) {
-            return back();
+        if ($errors = Validator::errors()) {
+            $old = Validator::getInput();
+            return view('admin', 'admin.users.create', compact('errors', 'old'));
         }
 
         $request = $this->transformRequest($request);
@@ -135,7 +143,7 @@ class UserController extends BaseController
      */
     public function importForm()
     {
-        return view('admin.users.import');
+        return view('admin', 'admin.users.import');
     }
 
     /**
@@ -171,7 +179,14 @@ class UserController extends BaseController
         $db->enableQueryLog();
         $user = $db->table('users')->select()->where(['id', $request['id']])->first();
         Log::info($db->getQueryLog());
-        return view('admin.users.update', $user[0]);
+        $template = [
+            "header" => "admin.header",
+            "content" => 'admin.users.update',
+            "footer" => "admin.footer",
+        ];
+        $html = $this->template->setTemplate($template)->setData($user[0])->render();
+        echo $html;
+        exit();
     }
 
     /**

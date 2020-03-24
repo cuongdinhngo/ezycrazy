@@ -1,14 +1,11 @@
 <?php
 use App\Common\WebForm;
 ?>
-<?php view('admin.header') ?>
-<body id="">
-    <?php view('admin.nav') ?>
     <div id="content">
         <div class="list">
             <form action="<?= url('user/update/'.$id) ?>" method="post" enctype="multipart/form-data">
                 <fieldset>
-                    <legend>Add new User</legend>
+                    <legend>Update User</legend>
                     <div class="form-group">
                         <label for="">Fullname</label>
                         <input type="text" class="form-control" name="fullname" placeholder="Enter Fullname" value="<?= $fullname?>">
@@ -38,4 +35,3 @@ use App\Common\WebForm;
             </form>    
         </div>
     </div>
-<?php view('admin.footer') ?>

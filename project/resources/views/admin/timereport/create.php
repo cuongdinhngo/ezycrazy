@@ -9,9 +9,6 @@ $header = config('define.workplace.header');
 $workplaces = (new CURL())->callApiByGet($url, $header);
 WebForm::checkError($workplaces);
 ?>
-<?php view('admin.header') ?>
-<body id="">
-    <?php view('admin.nav') ?>
     <div id="content">
         <div>
             <form>
@@ -65,4 +62,3 @@ WebForm::checkError($workplaces);
             </form>
         </div>
     </div>
-<?php view('admin.footer') ?>

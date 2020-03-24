@@ -11,9 +11,6 @@ $workplaces = $curl->callApiByGet($url, $header);
 WebForm::checkError($workplaces);
 
 ?>
-<?php view('admin.header') ?>
-<body id="">
-    <?php view('admin.nav') ?>
     <div id="content">
         <div>
             <form method="post" action="<?= url('timereport')?>">
@@ -56,4 +53,3 @@ WebForm::checkError($workplaces);
             ?>
         </div>
     </div>
-<?php view('admin.footer') ?>

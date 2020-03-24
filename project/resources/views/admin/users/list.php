@@ -1,6 +1,3 @@
-<?php view('admin.header') ?>
-<body id="">
-    <?php view('admin.nav') ?>
     <div id="content">
         <div id="content-header">
             <div class="card-body">
@@ -45,4 +42,3 @@
             </table>            
         </div>
     </div>
-<?php view('admin.footer') ?>

@@ -1,9 +1,6 @@
 <?php
 use App\Common\WebForm;
 ?>
-<?php view('admin.header') ?>
-<body id="">
-    <?php view('admin.nav') ?>
     <div id="content">
         <div class="list">
             <form action="<?= url('user/create') ?>" method="post" enctype="multipart/form-data">
@@ -11,17 +8,17 @@ use App\Common\WebForm;
                     <legend>Add new User</legend>
                     <div class="form-group">
                         <label for="">Fullname</label>
-                        <input type="text" class="form-control" name="fullname" placeholder="Enter Fullname" value="<?= $fullname?>">
+                        <input type="text" class="form-control" name="fullname" placeholder="Enter Fullname" value="<?= $old['fullname']?>">
                         <?php echo $errors['fullname'][0]; ?>
                     </div>
                     <div class="form-group">
                         <label for="email">Email address</label>
-                        <input type="text" class="form-control" name="email" placeholder="Enter email" value="<?= $email?>">
+                        <input type="text" class="form-control" name="email" placeholder="Enter email" value="<?= $old['email']?>">
                         <?php echo $errors['email'][0]; ?>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" name="password" placeholder="Password" value="<?= $password?>">
+                        <input type="password" class="form-control" name="password" placeholder="Password" value="<?= $old['password']?>">
                         <?php echo $errors['password'][0]; ?>
                     </div>
                     <div class="form-group">
@@ -43,4 +40,3 @@ use App\Common\WebForm;
             </form>    
         </div>
     </div>
-<?php view('admin.footer') ?>

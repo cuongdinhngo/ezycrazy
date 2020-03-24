@@ -1,6 +1,3 @@
-	<?php view('admin.script') ?>
-	<script>
-		console.log(js_variable.user_info['id']);
-	</script>
+	<?php include_view('admin.script') ?>
 </body>
 </html>

@@ -1,9 +1,6 @@
 <?php
 use App\Common\WebForm;
 ?>
-<?php view('admin.header') ?>
-<body id="">
-    <?php view('admin.nav') ?>
     <div id="content">
         <div class="list">
             <form action="<?= url('import-users') ?>" method="post" enctype="multipart/form-data">
@@ -19,4 +16,3 @@ use App\Common\WebForm;
             </form>    
         </div>
     </div>
-<?php view('admin.footer') ?>

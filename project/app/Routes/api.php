@@ -2,21 +2,21 @@
 
 return [
     '/export-users' => [
-        ['get' => 'UserController@exportUsers'],
+        ['get' => 'User/UserController@exportUsers'],
     ],
     '/users' => [
         'middleware' => ['first', 'second'],
-        ['get' => 'UserController@list'],
-        ['post' => 'UserController@create'],
-        ['put' => 'UserController@put']
+        ['get' => 'User/UserController@list'],
+        ['post' => 'User/UserController@create'],
+        ['put' => 'User/UserController@put']
     ],
     '/user/action' => [
-        ['get' => 'UserController@delete'],
-        ['post' => 'UserController@update']
+        ['get' => 'User/UserController@delete'],
+        ['post' => 'User/UserController@update']
     ],
     '/user/create' => [
-        ['get' => 'UserController@createForm'],
-        ['post' => 'UserController@create']
+        ['get' => 'User/UserController@createForm'],
+        ['post' => 'User/UserController@create']
     ],
     '/admin' => [
     	['get' => 'AdminController@admin'],

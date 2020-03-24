@@ -1,8 +1,16 @@
 <?php
-
 error_reporting(E_ALL & ~E_NOTICE);
+session_start();
 
-define('DOC_ROOT', $_SERVER["DOCUMENT_ROOT"]);
+/**
+ * Set DOCUMENT_ROOT
+ */
+if ($_SERVER["DOCUMENT_ROOT"]) {
+	define('DOC_ROOT', $_SERVER["DOCUMENT_ROOT"]);
+} else {
+	define('DOC_ROOT', __DIR__);
+}
+
 define('CONFIG_PATH', DOC_ROOT.'/../config/');
 define('ROUTE_PATH', DOC_ROOT.'/../app/Routes/');
 define('CONTROLLER_PATH', DOC_ROOT.'/../app/Controllers/');
