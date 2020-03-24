@@ -1,0 +1,23 @@
+version: '2'
+services:
+  #PHP_PHP-FPM_NGINX
+  ezy_server:
+    build: ./server
+    volumes:
+      - ../../project:/var/www/project
+    ports:
+      - "127.0.0.1:9020:80"
+  #MYSQL
+  ezy_mysql:
+    build: ./mysql
+    tty: true
+    ports:
+      - "23306:3306"
+    environment:
+      MYSQL_DATABASE: app
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root@secret123
+  #REDIS
+  ezy_redis:
+    build: ./redis
