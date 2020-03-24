@@ -19,7 +19,7 @@ return [
         ['post' => 'User/UserController@create']
     ],
     '/admin' => [
-    	['get' => 'AdminController@admin'],
+        ['get' => 'AdminController@admin'],
         ['post' => 'AdminController@signIn'],
     ]
 ];

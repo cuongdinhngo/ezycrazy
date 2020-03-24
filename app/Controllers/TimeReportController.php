@@ -18,6 +18,11 @@ class TimeReportController extends BaseController
 {
     protected $curl;
 
+    /**
+     * TimeReport Controller construct
+     *
+     * @param CURL $curl CURL
+     */
     public function __construct(CURL $curl)
     {
         parent::__construct();
@@ -26,6 +31,7 @@ class TimeReportController extends BaseController
 
     /**
      * Created List Form
+     *
      * @return [type] [description]
      */
     public function createListForm()
@@ -40,6 +46,7 @@ class TimeReportController extends BaseController
 
     /**
      * Created Time report Form
+     *
      * @return [type] [description]
      */
     public function createForm()
@@ -54,6 +61,7 @@ class TimeReportController extends BaseController
 
     /**
      * Search Workplace
+     *
      * @return [type] [description]
      */
     public function search()
@@ -87,6 +95,7 @@ class TimeReportController extends BaseController
 
     /**
      * Create new user
+     *
      * @return [type] [description]
      */
     public function create()
@@ -122,21 +131,23 @@ class TimeReportController extends BaseController
         $data = $this->curl->callApiByPost($url, $header, json_encode($tmp));
         Log::info($data);
 
-        // //insert time report
-        // $timeReport = new TimeReport();
-        // $timeReport->enableQueryLog();
-        // $newTimeReport = $timeReport->insert($request);
-        // Log::info($timeReport->getQueryLog());
+        //insert time report
+        $timeReport = new TimeReport();
+        $timeReport->enableQueryLog();
+        $newTimeReport = $timeReport->insert($request);
+        Log::info($timeReport->getQueryLog());
 
-        // //insert successfully
-        // if ($newTimeReport) {
-        //     die("Inserted successfully!!!");
-        // }
+        //insert successfully
+        if ($newTimeReport) {
+            die("Inserted successfully!!!");
+        }
     }
 
     /**
      * Transform Request
-     * @param  array  $request [description]
+     *
+     * @param array $request [description]
+     *
      * @return array
      */
     public function transformRequest(array $request)
@@ -146,8 +157,8 @@ class TimeReportController extends BaseController
             $path = '/public/assets/images/timereport';
             $size = ['50', '50'];
             $name = uniqid().'.jpg';
-            // $request['image'] = Image::upload($path.'/original', $photo, $name);
-            // $request['thumb'] = Image::uploadResize($path.'/thumb', $photo, $size, 'thumb-'.$name);
+            $request['image'] = Image::upload($path.'/original', $photo, $name);
+            $request['thumb'] = Image::uploadResize($path.'/thumb', $photo, $size, 'thumb-'.$name);
         } else {
             unset($request['image']);
         }

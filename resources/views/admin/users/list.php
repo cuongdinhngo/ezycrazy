@@ -20,8 +20,8 @@
                 <tbody>
                     <?php
                         $result = "";
-                        foreach ($users as $user) {
-                            $result .= '<tr>
+                    foreach ($users as $user) {
+                        $result .= '<tr>
                                 <th scope="row">'.$user["id"].'</th>
                                 <td>'.$user["fullname"].'</td>
                                 <td><img src="'.$user["thumb"].'"/></td>
@@ -35,7 +35,7 @@
                                     </form>
                                 </td>
                             </tr>';
-                        }
+                    }
                         echo $result;
                     ?>
                 </tbody>

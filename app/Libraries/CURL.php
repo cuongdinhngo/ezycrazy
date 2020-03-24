@@ -12,9 +12,11 @@ class CURL extends ClientURL
 
     /**
      * Call API
-     * @param  string       $url
-     * @param  array|null   $header
-     * @param  array|null   $request
+     *
+     * @param string     $url     Url
+     * @param array|null $header  Header
+     * @param array|null $request Request
+     *
      * @return array
      */
     public function callApi($url, $header = null, $request = null)
@@ -29,10 +31,9 @@ class CURL extends ClientURL
         $result = curl_exec($cURLConnection);
 
         Log::info("Call API: ". $url);
-        if($result === false)
-        {
+        if ($result === false) {
             $result = curl_error($cURLConnection);
-            Log::error("Calling API is FAILED: ". $error);
+            Log::error("Calling API is FAILED: ". $result);
         }
         curl_close($cURLConnection);
 
@@ -41,8 +42,10 @@ class CURL extends ClientURL
 
     /**
      * Call API by GET method
-     * @param  string   $url
-     * @param  array    $header
+     *
+     * @param string $url    URL
+     * @param array  $header Header
+     *
      * @return array
      */
     public function callApiByGet($url, $header = null)
@@ -58,9 +61,11 @@ class CURL extends ClientURL
 
     /**
      * Call API by POST method
-     * @param  string       $url
-     * @param  array        $header
-     * @param  array|json   $request
+     *
+     * @param string     $url     URL
+     * @param array      $header  Header
+     * @param array|json $request Request
+     *
      * @return json
      */
     public function callApiByPost($url, $header = null, $request = null)
@@ -75,12 +80,13 @@ class CURL extends ClientURL
 
     /**
      * Call API by customized method
-     * @param  string   $url
-     * @param  string   $method
-     * @param  integer  $port
+     *
+     * @param string $url    URL
+     * @param string $method Method
+     *
      * @return json
      */
-    public function callApiByCustomMethod($url, $method, $port = null)
+    public function callApiByCustomMethod($url, $method)
     {
         $result = $this->url($url)
                 ->customRequest($method)
@@ -89,5 +95,4 @@ class CURL extends ClientURL
                 ->exec();
         return $result;
     }
-
 }

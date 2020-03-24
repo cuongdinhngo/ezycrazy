@@ -15,6 +15,7 @@ class AdminController extends BaseController
 {
     /**
      * Admin login form
+     *
      * @return [type] [description]
      */
     public function admin()
@@ -24,6 +25,7 @@ class AdminController extends BaseController
 
     /**
      * Sign in
+     *
      * @return [type] [description]
      */
     public function signIn()
