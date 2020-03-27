@@ -44,7 +44,7 @@ class UserController extends BaseController
      *
      * @return json
      */
-    public function update()
+    public function updateTest()
     {
         $request = $this->request->all();
         Log::info(__METHOD__);
@@ -84,10 +84,18 @@ class UserController extends BaseController
      */
     public function list()
     {
-        $database = new Database();
-        $database->enableQueryLog();
-        $users = $database->table('users')->select(['id', 'fullname', 'email', 'thumb'])->where(['gender', '!=', 'other'])->get();
-        Log::info($database->getQueryLog());
+        // $database = new Database();
+        // $database->enableQueryLog();
+        // $users = $database->table('users')->select(['id', 'fullname', 'email', 'thumb'])->where(['gender', '=', 'male'])->orWhere(['gender', '=', 'female'])->get();
+        // Log::info($database->getQueryLog());
+
+        $params = [
+            'gender' => 'female',
+            'fullname' => 'ngo',
+        ];
+        $this->user->enableQueryLog();
+        $users = $this->user->select(['id', 'fullname', 'email', 'thumb'])->filter($params)->get();
+        Log::info($this->user->getQueryLog());
 
         $users = array_map(function ($user) {
             $user['thumb'] = assets('/images/users/thumb/'.$user["thumb"]);
