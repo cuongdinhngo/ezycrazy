@@ -4,9 +4,9 @@ services:
   ezy_server:
     build: ./server
     volumes:
-      - ../../project:/var/www/project
+      - ../:/var/www/project
     ports:
-      - "127.0.0.1:9020:80"
+      - "127.0.0.1:8010:80"
   #MYSQL
   ezy_mysql:
     build: ./mysql
