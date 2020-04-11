@@ -96,7 +96,7 @@ class UserController extends BaseController
         if (isApi()) {
             return Response::toJson($users);
         }
-        return view('admin', 'admin.users.list', compact('users'));
+        return template('admin', 'admin.users.list', compact('users'));
     }
 
     /**
@@ -119,7 +119,7 @@ class UserController extends BaseController
         Validator::execute($request, $rules);
         if ($errors = Validator::errors()) {
             $old = Validator::getInput();
-            return view('admin', 'admin.users.create', compact('errors', 'old'));
+            return template('admin', 'admin.users.create', compact('errors', 'old'));
         }
 
         $request = $this->transformRequest($request);
