@@ -53,7 +53,7 @@ MEMO
 Atom framework verifies api by prefix url (ex: http://127.0.0.1:8010/api/users) or header value (ex: Content-Type:application/json)
 
 #### New Controller
-* New Controller class must be extended [BaseController class](app/Controllers/UserController.php)
+* New Controller class must be extended [BaseController class](app/Controllers/User/UserController.php)
 
 #### New Model
 * New Model class must be extended [BaseModel class](app/Models/User.php)
