@@ -28,11 +28,19 @@ try {
 <pre>
 docker-compose up -d
 </pre>
-- In virtual machine, you need to install [composer](https://getcomposer.org/download/) and then execute:
+- Create `env.ini` file by:
+<pre>
+cp env.ini.sample config/env.ini
+</pre>
+- Obtain IPAddress and Update Database host in `env.ini`
+<pre>
+docker inspect docker_ezy_mysql_1 | grep IPAddress
+</pre>
+- Set up database by importing [`users.sql`](https://github.com/cuongnd88/ezycrazy/blob/master/project/storage/sql/users.sql) at [`storage/sql`](https://github.com/cuongnd88/ezycrazy/tree/master/project/storage) folder
+- Install Atom and related packages
 <pre>
 composer install
 </pre>
-- Set up database by importing [`users.sql`](https://github.com/cuongnd88/ezycrazy/blob/master/project/storage/sql/users.sql) at [`storage/sql`](https://github.com/cuongnd88/ezycrazy/tree/master/project/storage) folder
 - Go to browser with below url and Enjoy it
 <pre>
 http://127.0.0.1:9020/admin
@@ -49,3 +57,15 @@ Atom framework verifies api by prefix url (ex: http://127.0.0.1:9020/api/users) 
 
 #### New Model
 * New Model class must be extended [BaseModel class](project/app/Models/User.php)
+
+#### New Middleware
+* New Middleware must be created in [Middlewares folders(app/Middlewares) and has primary method `handle()`. Please refer to [PhpToJs](app/Middlewares/PhpToJs.php)
+* New Middleware has to declare at [`config/middleware.php`](config/middleware.php)
+
+#### PHP to JS
+* Atom provides PhpToJs to transform PHP variables to Js variables [more detail](app/Middlewares/PhpToJs.php)
+
+#### Template Provider
+* Set templates at [`config/templates.php`](config/templates.php). Item has `null` value which will be replaced
+* With `template()` function, please refer to `app/Controllers/User/UserController@list()`
+* With `Template` class, please refer to `app/Controllers/User/UserController@updateForm()`
