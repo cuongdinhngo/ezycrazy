@@ -8,6 +8,11 @@ use Atom\File\Log;
 
 class IdentifySignedUrl
 {
+	/**
+	 * Identify signed Url
+	 *
+	 * @return void
+	 */
     public function handle()
     {
         if (false === Url::identifySignature()) {

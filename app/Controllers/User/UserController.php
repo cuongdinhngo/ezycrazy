@@ -20,14 +20,13 @@ use Atom\Http\Url;
 class UserController extends BaseController
 {
     private $user;
-    private $timeReport;
     private $log;
     private $template;
 
     /**
      * User Controller construct
      *
-     * @param User       $user       User
+     * @param User $user User
      */
     public function __construct(User $user)
     {
@@ -37,9 +36,14 @@ class UserController extends BaseController
         $this->template = new Template();
     }
 
+    /**
+     * Demo temporary signed URL
+     *
+     * @return string
+     */
     public function put()
     {
-        var_dump(Url::temporarySignedUrl('/users/add', 3));
+        return Url::temporarySignedUrl('/users/add', 3);
     }
 
     /**
