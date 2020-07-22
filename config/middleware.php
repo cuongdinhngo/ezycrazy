@@ -9,6 +9,7 @@ return [
         'second' => 'SecondMiddleware',
         'auth' => 'Authorization',
         'phpToJs' => 'PhpToJs',
+        'signed.url' => 'IdentifySignedUrl',
     ],
 
     /**
@@ -16,6 +17,7 @@ return [
      */
     'priorityMiddlewares' => [
         'auth' => 'Authorization',
+        'signed.url' => 'IdentifySignedUrl',
         'phpToJs' => 'PhpToJs',
     ],
 ];

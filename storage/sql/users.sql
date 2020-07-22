@@ -42,7 +42,7 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `fullname`, `email`, `password`, `photo`, `gender`, `thumb`)
 VALUES
-	(1,'Ngo Dinh Cuong','cuong.ngo@asiantech.vn','eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.WyIxMjM0NTY3ODkwIl0.kbKaqjOaOfGXdSEYmK9pOcW_hKHyndpDF0W2gOufvV8',null,'male',null),
+	(1,'Ngo Dinh Cuong','cuong.ngo@gmail.com','eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.WyIxMjM0NTY3ODkwIl0.kbKaqjOaOfGXdSEYmK9pOcW_hKHyndpDF0W2gOufvV8',null,'male',null),
 	(2,'Ngo Dinh Cuong','ngodinhcuong611@yahoo.com','eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.WyIxMjM0NTY3ODkwIl0.kbKaqjOaOfGXdSEYmK9pOcW_hKHyndpDF0W2gOufvV8',null,'female',null);
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;

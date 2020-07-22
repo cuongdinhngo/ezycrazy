@@ -1,4 +1,3 @@
 composer.lock
-config/env.ini
 storage/logs/dev.log
 vendor/

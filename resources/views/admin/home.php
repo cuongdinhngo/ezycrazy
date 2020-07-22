@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <?php include_view('admin.header') ?>
+    <?php view('admin.header') ?>
 </head>
 <body id="">
-    <?php include_view('admin.nav') ?>
+    <?php view('admin.nav') ?>
     <div id="content">
         <h1>Welcome to Atom Framework!!!</h1>
     </div>

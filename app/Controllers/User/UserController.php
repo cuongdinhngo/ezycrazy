@@ -15,28 +15,35 @@ use Atom\File\CSV;
 use Atom\Guard\Auth;
 use Atom\Template\Template;
 use App\Models\User;
-use App\Models\TimeReport;
+use Atom\Http\Url;
 
 class UserController extends BaseController
 {
     private $user;
-    private $timeReport;
     private $log;
     private $template;
 
     /**
      * User Controller construct
      *
-     * @param User       $user       User
-     * @param TimeReport $timeReport TimeReport
+     * @param User $user User
      */
-    public function __construct(User $user, TimeReport $timeReport)
+    public function __construct(User $user)
     {
         parent::__construct();
         $this->user = $user;
-        $this->timeReport = $timeReport;
         $this->log = new Log();
         $this->template = new Template();
+    }
+
+    /**
+     * Demo temporary signed URL
+     *
+     * @return string
+     */
+    public function put()
+    {
+        return Url::temporarySignedUrl('/users/add', 3);
     }
 
     /**
@@ -44,7 +51,7 @@ class UserController extends BaseController
      *
      * @return json
      */
-    public function update()
+    public function updateTest()
     {
         $request = $this->request->all();
         Log::info(__METHOD__);
@@ -59,7 +66,7 @@ class UserController extends BaseController
      */
     public function createForm()
     {
-        return view('admin', 'admin.users.create');
+        return template('admin', 'admin.users.create');
     }
 
     /**
@@ -84,10 +91,18 @@ class UserController extends BaseController
      */
     public function list()
     {
-        $database = new Database();
-        $database->enableQueryLog();
-        $users = $database->table('users')->select(['id', 'fullname', 'email', 'thumb'])->where(['gender', '!=', 'other'])->get();
-        Log::info($database->getQueryLog());
+        // $database = new Database();
+        // $database->enableQueryLog();
+        // $users = $database->table('users')->select(['id', 'fullname', 'email', 'thumb'])->where(['gender', '=', 'male'])->orWhere(['gender', '=', 'female'])->get();
+        // Log::info($database->getQueryLog());
+
+        $params = [
+            'gender' => 'female',
+            'fullname' => 'ngo',
+        ];
+        $this->user->enableQueryLog();
+        $users = $this->user->select(['id', 'fullname', 'email', 'thumb'])->filter($params)->get();
+        Log::info($this->user->getQueryLog());
 
         $users = array_map(function ($user) {
             $user['thumb'] = assets('/images/users/thumb/'.$user["thumb"]);
