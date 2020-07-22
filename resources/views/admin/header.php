@@ -9,4 +9,4 @@
     <link rel="stylesheet" href="<?= assets('/css/styles.css') ?>">
 </head>
 <body id="">
-    <?php include_view('admin.nav') ?>
+    <?php view('admin.nav') ?>

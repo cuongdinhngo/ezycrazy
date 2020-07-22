@@ -10,6 +10,10 @@ return [
         ['post' => 'User/UserController@create'],
         ['put' => 'User/UserController@put']
     ],
+    '/users/add' => [
+        'middleware' => ['signed.url'],
+        ['get' => 'User/UserController@createForm'],
+    ],
     '/user/action' => [
         ['get' => 'User/UserController@delete'],
         ['post' => 'User/UserController@update']

@@ -15,7 +15,7 @@ use Atom\File\CSV;
 use Atom\Guard\Auth;
 use Atom\Template\Template;
 use App\Models\User;
-use App\Models\TimeReport;
+use Atom\Http\Url;
 
 class UserController extends BaseController
 {
@@ -28,15 +28,18 @@ class UserController extends BaseController
      * User Controller construct
      *
      * @param User       $user       User
-     * @param TimeReport $timeReport TimeReport
      */
-    public function __construct(User $user, TimeReport $timeReport)
+    public function __construct(User $user)
     {
         parent::__construct();
         $this->user = $user;
-        $this->timeReport = $timeReport;
         $this->log = new Log();
         $this->template = new Template();
+    }
+
+    public function put()
+    {
+        var_dump(Url::temporarySignedUrl('/users/add', 3));
     }
 
     /**
@@ -44,7 +47,7 @@ class UserController extends BaseController
      *
      * @return json
      */
-    public function update()
+    public function updateTest()
     {
         $request = $this->request->all();
         Log::info(__METHOD__);
@@ -59,7 +62,7 @@ class UserController extends BaseController
      */
     public function createForm()
     {
-        return view('admin', 'admin.users.create');
+        return template('admin', 'admin.users.create');
     }
 
     /**

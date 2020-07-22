@@ -20,7 +20,7 @@ class AdminController extends BaseController
      */
     public function admin()
     {
-        return include_view('admin.login');
+        return view('admin.login');
     }
 
     /**

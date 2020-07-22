@@ -1,3 +1,3 @@
-	<?php include_view('admin.script') ?>
+	<?php view('admin.script') ?>
 </body>
 </html>
