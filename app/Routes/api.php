@@ -21,5 +21,14 @@ return [
     '/admin' => [
         ['get' => 'AdminController@admin'],
         ['post' => 'AdminController@signIn'],
+    ],
+    '/accounts' => [
+        ['get' => 'Account/AccountController@list'],
+        ['post' => 'Account/AccountController@create'],
+        ['put' => 'Account/AccountController@update'],
+    ],
+    '/accounts/action' => [
+        ['post' => 'Account/AccountController@update'],
+        ['get' => 'Account/AccountController@delete'],
     ]
 ];
