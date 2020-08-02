@@ -25,6 +25,7 @@ class AccountController extends BaseController
     {
         try {
             $users = $this->account->get();
+            return $users;
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
