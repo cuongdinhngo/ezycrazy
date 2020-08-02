@@ -33,7 +33,7 @@ class AccountController extends BaseController
             return $users;
         } catch (\Exception $e) {
             echo $e->getMessage();
-        }        
+        }
     }
 
     /**
