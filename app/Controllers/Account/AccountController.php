@@ -10,6 +10,11 @@ class AccountController extends BaseController
 {
     protected $account;
 
+    /**
+     * Construct class
+     *
+     * @param Account $account Account
+     */
     public function __construct(Account $account)
     {
         parent::__construct();
@@ -25,10 +30,10 @@ class AccountController extends BaseController
     {
         try {
             $users = $this->account->get();
+            return $users;
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
-        
     }
 
     /**
