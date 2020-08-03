@@ -10,7 +10,6 @@ class ProductController extends BaseController
 {
     /**
      * Construct class
-     *
      */
     public function __construct()
     {
