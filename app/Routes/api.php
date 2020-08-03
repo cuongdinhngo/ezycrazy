@@ -30,5 +30,13 @@ return [
     '/accounts/action' => [
         ['post' => 'Account/AccountController@update'],
         ['get' => 'Account/AccountController@delete'],
-    ]
+    ],
+    '/products' => [
+        ['post' => 'Product/ProductController@create'],
+        ['get' => 'Product/ProductController@list'],
+    ],
+    '/products/action' => [
+        ['post' => 'Product/ProductController@update'],
+        ['get' => 'Product/ProductController@delete'],
+    ],
 ];
