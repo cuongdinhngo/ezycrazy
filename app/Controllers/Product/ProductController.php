@@ -64,7 +64,7 @@ class ProductController extends BaseController
             $entityManager = $this->getDoctrineEntityManager();
             $product = $entityManager->find(Product::class, $request['id']);
             if ($product === null) {
-                echo "Product $id does not exist.\n";
+                echo "Product $request['id'] does not exist.\n";
                 exit(1);
             }
             $product->setName($request['name']);
@@ -87,7 +87,7 @@ class ProductController extends BaseController
             $entityManager = $this->getDoctrineEntityManager();
             $product = $entityManager->find(Product::class, $request['id']);
             if ($product === null) {
-                echo "Product $id does not exist.\n";
+                echo "Product $request['id'] does not exist.\n";
                 exit(1);
             }
             $entityManager->remove($product);
