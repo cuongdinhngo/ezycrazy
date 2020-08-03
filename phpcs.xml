@@ -12,7 +12,7 @@
     <rule ref="PSR2"></rule>
 
     <rule ref="PEAR.Commenting.FunctionComment"></rule>
-    <rule ref="Generic.Commenting.DocComment"></rule>
+<!--     <rule ref="Generic.Commenting.DocComment"></rule> -->
     <rule ref="Generic.Strings.UnnecessaryStringConcat"/>
     <rule ref="Generic.PHP.LowerCaseConstant"/>
     <rule ref="Generic.PHP.LowerCaseKeyword"/>

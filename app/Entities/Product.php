@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Product
+ *
  * @ORM\Entity
  * @ORM\Table(name="products")
  */
@@ -13,6 +14,7 @@ class Product
 {
     /**
      * Product Id
+     *
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
@@ -22,6 +24,7 @@ class Product
 
     /**
      * Product Name
+     *
      * @ORM\Column(type="string")
      * @var string
      */
@@ -29,6 +32,7 @@ class Product
 
     /**
      * Get Product ID
+     *
      * @return int
      */
     public function getId()
@@ -38,6 +42,7 @@ class Product
 
     /**
      * Get Product Name
+     *
      * @return string
      */
     public function getName()
@@ -47,7 +52,10 @@ class Product
 
     /**
      * Set Product name
+     *
      * @param string $name Product name
+     *
+     * @return void
      */
     public function setName($name)
     {
