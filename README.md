@@ -56,7 +56,8 @@ Atom framework verifies api by prefix url (ex: http://127.0.0.1:8010/api/users) 
 * New Controller class must be extended [BaseController class](app/Controllers/User/UserController.php)
 
 #### New Model
-* New Model class must be extended [BaseModel class](app/Models/User.php)
+* [Database driver: mysqli] New Model class must be extended [BaseModel class](app/Models/User.php)
+* [Database driver: pdo_mysql] New Model class must be extended [BaseModel class](app/Models/Account.php)
 
 #### New Middleware
 * New Middleware must be created in [Middlewares folders(app/Middlewares) and has primary method `handle()`. Please refer to [PhpToJs](app/Middlewares/PhpToJs.php)
@@ -69,3 +70,8 @@ Atom framework verifies api by prefix url (ex: http://127.0.0.1:8010/api/users) 
 * Set templates at [`config/templates.php`](config/templates.php). Item has `null` value which will be replaced
 * With `template()` function, please refer to `app/Controllers/User/UserController@list()`
 * With `Template` class, please refer to `app/Controllers/User/UserController@updateForm()`
+
+#### Doctrine Database Abstract Layer
+* Set `DBAL_IN_USE = true` and `DBAL_PATH_CONFIG = '/../app/Entities'` in env file
+* Create an Entity, please refer to [Product class](app/Entities/Product.php)
+* Create an Controler, please refer to [Product class](app/Controllers/Product/ProductController.php)
