@@ -75,3 +75,8 @@ Atom framework verifies api by prefix url (ex: http://127.0.0.1:8010/api/users) 
 * Set `DBAL_IN_USE = true` and `DBAL_PATH_CONFIG = '/../app/Entities'` in env file
 * Create an Entity, please refer to [Product class](app/Entities/Product.php)
 * Create an Controler, please refer to [ProductController class](app/Controllers/Product/ProductController.php)
+* Generate the Database schema
+<pre>
+php vendor/doctrine/orm/bin/doctrine orm:schema-tool:create
+php vendor/doctrine/orm/bin/doctrine orm:schema-tool:update
+</pre>
