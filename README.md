@@ -84,4 +84,4 @@ php vendor/doctrine/orm/bin/doctrine orm:schema-tool:update
 #### GraphQL
 * Create an Controler, please refer to [GraphQLUserController class](app/Controllers/GraphQLSample/GraphQLUserController.php)
 * Create an Schema, please refer to [User schema](app/GraphQL/Schema/user_schema.graphql)
-* Create an Resolver, please refer to [CreateUserResolver schema](app/GraphQL/Resolvers/CreateUserResolver.php)
+* Create an Resolver, please refer to [CreateUserResolver class](app/GraphQL/Resolvers/CreateUserResolver.php)
