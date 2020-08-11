@@ -22,6 +22,11 @@ class GraphQLSampleController extends BaseController
         parent::__construct();
     }
 
+    /**
+     * GraphQL sayHello
+     *
+     * @return json
+     */
     public function sayHello()
     {
         try {
@@ -50,6 +55,7 @@ class GraphQLSampleController extends BaseController
                             'y' => ['type' => Type::int()],
                         ],
                         'resolve' => function ($calc, $args) {
+                            $calc;
                             return $args['x'] + $args['y'];
                         },
                     ],
@@ -82,6 +88,11 @@ class GraphQLSampleController extends BaseController
         echo json_encode($output);
     }
 
+    /**
+     * Root value
+     *
+     * @return array
+     */
     public function rootValueGreeting()
     {
         return [
@@ -93,9 +104,13 @@ class GraphQLSampleController extends BaseController
         ];
     }
 
+    /**
+     * Shorthand Greeting
+     *
+     * @return json
+     */
     public function shorthandGreeting()
     {
-        var_dump(__METHOD__);
         try {
             $schema = BuildSchema::build(file_get_contents(DOC_ROOT.'/../app/GraphQL/Schema/schema.graphqls'));
             $rootValue = $this->rootValueGreeting();
@@ -116,6 +131,11 @@ class GraphQLSampleController extends BaseController
         echo json_encode($result);
     }
 
+    /**
+     * Root value
+     *
+     * @return array
+     */
     public function rootValueCalc()
     {
         return [
@@ -126,9 +146,13 @@ class GraphQLSampleController extends BaseController
         ];
     }
 
+    /**
+     * Shorthand Calc
+     *
+     * @return json
+     */
     public function shorthandCalc()
     {
-        var_dump(__METHOD__);
         try {
             $schema = BuildSchema::build(file_get_contents(DOC_ROOT.'/../app/GraphQL/Schema/schema.graphqls'));
             $rootValue = $this->rootValueCalc();

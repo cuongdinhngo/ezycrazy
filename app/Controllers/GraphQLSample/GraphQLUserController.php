@@ -57,7 +57,7 @@ class GraphQLUserController extends BaseController
                     'users' => [
                         'type' => Type::listOf($userType),
                         'resolve' => function ($root, $args) {
-                            Log::info('QUERY => users');
+                            $root; $args;
                             return $this->getUsers();
                         }
                     ],
