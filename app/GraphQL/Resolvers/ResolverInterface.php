@@ -2,6 +2,7 @@
 
 namespace App\GraphQL\Resolvers;
 
-interface ResolverInterface {
+interface ResolverInterface
+{
     public function resolve($rootValue, $args, $context);
 }

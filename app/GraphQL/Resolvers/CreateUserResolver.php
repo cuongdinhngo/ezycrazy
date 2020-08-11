@@ -7,7 +7,7 @@ use Atom\File\Log;
 
 class CreateUserResolver implements ResolverInterface
 {
-	/**
+    /**
      * Resolve
      * @param  [type] $rootValue [description]
      * @param  [type] $args      [description]

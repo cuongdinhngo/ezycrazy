@@ -121,7 +121,7 @@ class GraphQLSampleController extends BaseController
 
             $result = GraphQL::executeQuery($schema, $query, $rootValue, null, $variableValues);
         } catch (\Exception $e) {
-             $result = [
+            $result = [
                 'error' => [
                     'message' => $e->getMessage()
                 ]
@@ -163,7 +163,7 @@ class GraphQLSampleController extends BaseController
 
             $result = GraphQL::executeQuery($schema, $query, $rootValue, null, $variableValues);
         } catch (\Exception $e) {
-             $result = [
+            $result = [
                 'error' => [
                     'message' => $e->getMessage()
                 ]

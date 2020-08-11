@@ -19,7 +19,18 @@ use App\GraphQL\Resolvers\CreateUserResolver;
 
 class GraphQLUserController extends BaseController
 {
+    /**
+     * User
+     *
+     * @var User
+     */
     protected $user;
+
+    /**
+     * Schema path
+     *
+     * @var string
+     */
     protected $schemaPath;
 
     /**
@@ -57,7 +68,8 @@ class GraphQLUserController extends BaseController
                     'users' => [
                         'type' => Type::listOf($userType),
                         'resolve' => function ($root, $args) {
-                            $root; $args;
+                            $root;
+                            $args;
                             return $this->getUsers();
                         }
                     ],
@@ -117,7 +129,7 @@ class GraphQLUserController extends BaseController
                 'error' => [
                     'message' => $e->getMessage()
                 ]
-            ];
+             ];
         }
         header('Content-Type: application/json; charset=UTF-8');
         echo json_encode($result);
@@ -159,7 +171,7 @@ class GraphQLUserController extends BaseController
                 'error' => [
                     'message' => $e->getMessage()
                 ]
-            ];
+             ];
         }
         header('Content-Type: application/json; charset=UTF-8');
         echo json_encode($result);
@@ -201,7 +213,7 @@ class GraphQLUserController extends BaseController
                 'error' => [
                     'message' => $e->getMessage()
                 ]
-            ];
+             ];
         }
         header('Content-Type: application/json; charset=UTF-8');
         echo json_encode($result);
@@ -221,5 +233,4 @@ class GraphQLUserController extends BaseController
             },
         ];
     }
-
 }
