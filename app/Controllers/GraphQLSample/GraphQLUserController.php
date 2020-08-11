@@ -34,7 +34,8 @@ class GraphQLUserController extends BaseController
     protected $schemaPath;
 
     /**
-     * Construct class
+     * Construct
+     * @param User $user User
      */
     public function __construct(User $user)
     {
