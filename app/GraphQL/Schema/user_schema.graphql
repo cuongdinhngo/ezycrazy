@@ -1,0 +1,24 @@
+schema {
+    query: Query
+    mutation: CreateUser
+}
+
+type User {
+    id: Int
+    fullname: String
+    email: String
+    photo: String
+    gender: String
+}
+
+type Query {
+    users: [User]
+    user(id: Int): [User]
+}
+
+type CreateUser {
+    create(
+        fullname: String,
+        email: String
+    ): [User]
+}
