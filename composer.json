@@ -18,7 +18,8 @@
         "predis/predis": "~1.1.1",
         "doctrine/orm": "^2.6.2",
         "symfony/yaml": "2.*",
-        "cuongnd88/atom": "1.1.8"
+        "cuongnd88/atom": "1.1.8",
+        "webonyx/graphql-php": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0",

@@ -1,0 +1,12 @@
+schema {
+  query: Greeting
+  mutation: Calc
+}
+
+type Greeting {
+	echo(message: String): String
+}
+
+type Calc {
+	sum(x: Int, y: Int): Int
+}

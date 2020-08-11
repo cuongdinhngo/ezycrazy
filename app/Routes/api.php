@@ -39,4 +39,26 @@ return [
         ['post' => 'Product/ProductController@update'],
         ['get' => 'Product/ProductController@delete'],
     ],
+    '/graphql-sample' => [
+        ['get' => 'GraphQLSample/GraphQLSampleController@sayHello'],
+    ],
+    '/graphql-shorthand-greeting' => [
+        ['get' => 'GraphQLSample/GraphQLSampleController@shorthandGreeting'],
+    ],
+    '/graphql-shorthand-calc' => [
+        ['get' => 'GraphQLSample/GraphQLSampleController@shorthandCalc'],
+    ],
+    '/graphql-list-users' => [
+        ['get' => 'GraphQLSample/GraphQLUserController@list'],
+        ['post' => 'GraphQLSample/GraphQLUserController@list'],
+    ],
+    '/graphql-list-users-shorthand' => [
+        ['get' => 'GraphQLSample/GraphQLUserController@shorthandList'],
+    ],
+    '/graphql-show-user-shorthand' => [
+        ['get' => 'GraphQLSample/GraphQLUserController@shorthandShow'],
+    ],
+    '/graphql-create-user' => [
+        ['post' => 'GraphQLSample/GraphQLUserController@create'],
+    ],
 ];
