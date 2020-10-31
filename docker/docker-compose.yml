@@ -3,12 +3,14 @@ services:
   #PHP_PHP-FPM_NGINX
   ezy_server:
     build: ./server
+    container_name: ezy_server
     volumes:
       - ../:/var/www/project
     ports:
-      - "127.0.0.1:8010:80"
+      - "8010:80"
   #MYSQL
   ezy_mysql:
+    container_name: ezy_mysql
     build: ./mysql
     tty: true
     ports:
@@ -19,5 +21,5 @@ services:
       MYSQL_PASSWORD: secret
       MYSQL_ROOT_PASSWORD: root@secret123
   #REDIS
-  ezy_redis:
-    build: ./redis
+  # ezy_redis:
+  #   build: ./redis

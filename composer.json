@@ -1,11 +1,6 @@
 {
     "name": "cuongnd88/ezycrazy",
     "description": "Powered by Atom Framework",
-    "keywords": [
-        "PHP Framework",
-        "MVC Framework"
-    ],
-    "homepage": "https://github.com/cuongnd88/ezycrazy",
     "license": "MIT",
     "authors": [
         {
@@ -13,8 +8,13 @@
             "email": "dinhcuongngo@gmail.com"
         }
     ],
+    "keywords": [
+        "PHP Framework",
+        "MVC Framework"
+    ],
+    "homepage": "https://github.com/cuongnd88/ezycrazy",
     "require": {
-        "php": "^7.0",
+        "php": "^7.4",
         "predis/predis": "~1.1.1",
         "doctrine/orm": "^2.6.2",
         "symfony/yaml": "2.*",
