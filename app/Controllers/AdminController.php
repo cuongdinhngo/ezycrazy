@@ -26,6 +26,8 @@ class AdminController extends BaseController
     /**
      * Sign in
      *
+     * @param mixed $request Request
+     *
      * @return [type] [description]
      */
     public function signIn(Request $request)

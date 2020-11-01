@@ -39,6 +39,8 @@ class AccountController extends BaseController
     /**
      * Create new account
      *
+     * @param mixed $request Request
+     *
      * @return array
      */
     public function create(Request $request)
@@ -49,6 +51,8 @@ class AccountController extends BaseController
 
     /**
      * Update account
+     *
+     * @param mixed $request Request
      *
      * @return boolean
      */
@@ -63,6 +67,8 @@ class AccountController extends BaseController
 
     /**
      * Delete account
+     *
+     * @param mixed $request Request
      *
      * @return boolean
      */

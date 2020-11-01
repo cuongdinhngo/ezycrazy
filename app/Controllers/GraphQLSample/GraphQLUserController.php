@@ -47,6 +47,8 @@ class GraphQLUserController extends BaseController
     /**
      * List users
      *
+     * @param mixed $request Request
+     *
      * @return json
      */
     public function list(Request $request)
@@ -112,6 +114,8 @@ class GraphQLUserController extends BaseController
     /**
      * List Users via shorthand
      *
+     * @param mixed $request Request
+     *
      * @return json
      */
     public function shorthandList(Request $request)
@@ -151,6 +155,8 @@ class GraphQLUserController extends BaseController
 
     /**
      * Show User via shorthand
+     *
+     * @param mixed $request Request
      *
      * @return json
      */
@@ -192,6 +198,8 @@ class GraphQLUserController extends BaseController
 
     /**
      * Create a new User
+     *
+     * @param mixed $request Request
      *
      * @return json
      */

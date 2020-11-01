@@ -36,6 +36,8 @@ class ProductController extends BaseController
     /**
      * Create new product
      *
+     * @param mixed $request Request
+     *
      * @return void
      */
     public function create(Request $request)
@@ -51,6 +53,8 @@ class ProductController extends BaseController
 
     /**
      * Update product
+     *
+     * @param mixed $request Request
      *
      * @return void
      */
@@ -73,6 +77,8 @@ class ProductController extends BaseController
 
     /**
      * Delete product
+     *
+     * @param mixed $request Request
      *
      * @return void
      */

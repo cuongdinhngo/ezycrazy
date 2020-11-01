@@ -49,6 +49,8 @@ class UserController extends BaseController
     /**
      * Update
      *
+     * @param mixed $request Request
+     *
      * @return json
      */
     public function updateTest(Request $request)
@@ -70,6 +72,8 @@ class UserController extends BaseController
 
     /**
      * Delete User
+     *
+     * @param mixed $request Request
      *
      * @return void
      */
@@ -114,6 +118,8 @@ class UserController extends BaseController
 
     /**
      * Create new user
+     *
+     * @param mixed $request Request
      *
      * @return [type] [description]
      */
@@ -175,6 +181,8 @@ class UserController extends BaseController
     /**
      * Import users from CSV file
      *
+     * @param mixed $request Request
+     *
      * @return [type] [description]
      */
     public function importUsers(Request $request)
@@ -194,6 +202,8 @@ class UserController extends BaseController
 
     /**
      * Show Updated User Form
+     *
+     * @param mixed $request Request
      *
      * @return [type] [description]
      */
@@ -215,6 +225,8 @@ class UserController extends BaseController
 
     /**
      * Update user
+     *
+     * @param mixed $request Request
      *
      * @return [type] [description]
      */
@@ -244,7 +256,7 @@ class UserController extends BaseController
     /**
      * Transform Request
      *
-     * @param array $request [description]
+     * @param mixed $request Request
      *
      * @return array
      */
