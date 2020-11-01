@@ -28,10 +28,9 @@ class AdminController extends BaseController
      *
      * @return [type] [description]
      */
-    public function signIn()
+    public function signIn(Request $request)
     {
-        $request = $this->request->all();
         $request['password'] = Token::generate([$request['password']], env('SECRET_KEY'));
-        Auth::login($request);
+        Auth::login(['email' => $request->email, 'password' => $request->password]);
     }
 }

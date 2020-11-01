@@ -14,11 +14,11 @@
     ],
     "homepage": "https://github.com/cuongnd88/ezycrazy",
     "require": {
+        "cuongnd88/atom": "1.1.9",
         "php": "^7.4",
         "predis/predis": "~1.1.1",
         "doctrine/orm": "^2.6.2",
         "symfony/yaml": "2.*",
-        "cuongnd88/atom": "1.1.8",
         "webonyx/graphql-php": "dev-master"
     },
     "require-dev": {

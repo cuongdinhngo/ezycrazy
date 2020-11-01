@@ -2,7 +2,7 @@
 
 return [
     '/export-users' => [
-        ['get' => 'UserController@exportUsers'],
+        ['get' => 'User/UserController@exportUsers'],
     ],
     '/users' => [
         'middleware' => ['first', 'auth', 'second', 'phpToJs'],

@@ -51,9 +51,8 @@ class UserController extends BaseController
      *
      * @return json
      */
-    public function updateTest()
+    public function updateTest(Request $request)
     {
-        $request = $this->request->all();
         Log::info(__METHOD__);
         Log::info($request);
         return Response::toJson($request);
@@ -74,9 +73,8 @@ class UserController extends BaseController
      *
      * @return void
      */
-    public function delete()
+    public function delete(Request $request)
     {
-        $request = $this->request->all();
         $database = new Database();
         $database->enableQueryLog();
         $database->table('users')->where(['id', $request['id']])->delete();
@@ -105,7 +103,7 @@ class UserController extends BaseController
         Log::info($this->user->getQueryLog());
 
         $users = array_map(function ($user) {
-            $user['thumb'] = assets('/images/users/thumb/'.$user["thumb"]);
+            $user['thumb'] = $user['thumb'] ? assets('/images/users/thumb/'.$user["thumb"]) : $user['thumb'];
             return $user;
         }, $users);
         if (isApi()) {
@@ -119,11 +117,8 @@ class UserController extends BaseController
      *
      * @return [type] [description]
      */
-    public function create()
+    public function create(Request $request)
     {
-        //Get request
-        $request = $this->request->all();
-
         //Check validation
         $rules = [
             'fullname' => 'required',
@@ -174,7 +169,7 @@ class UserController extends BaseController
      */
     public function importForm()
     {
-        return view('admin', 'admin.users.import');
+        return template('admin', 'admin.users.import');
     }
 
     /**
@@ -182,10 +177,8 @@ class UserController extends BaseController
      *
      * @return [type] [description]
      */
-    public function importUsers()
+    public function importUsers(Request $request)
     {
-        //Get request
-        $request = $this->request->all();
         //Read CSV file
         $standardHeader = config('csv.users');
         $data = CSV::toArray($request['file'], $standardHeader);
@@ -204,10 +197,8 @@ class UserController extends BaseController
      *
      * @return [type] [description]
      */
-    public function updateForm()
+    public function updateForm(Request $request)
     {
-        //Get request
-        $request = $this->request->all();
         $database = new Database();
         $database->enableQueryLog();
         $user = $database->table('users')->select()->where(['id', $request['id']])->first();
@@ -227,10 +218,8 @@ class UserController extends BaseController
      *
      * @return [type] [description]
      */
-    public function update()
+    public function update(Request $request)
     {
-        //Get request
-        $request = $this->request->all();
 
         //Check validation
         $rules = [
