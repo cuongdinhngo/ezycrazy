@@ -47,9 +47,11 @@ class GraphQLUserController extends BaseController
     /**
      * List users
      *
+     * @param mixed $request Request
+     *
      * @return json
      */
-    public function list()
+    public function list(Request $request)
     {
         Log::info(__METHOD__);
         try {
@@ -80,7 +82,6 @@ class GraphQLUserController extends BaseController
             $schema = new Schema([
                 'query' => $queryType,
             ]);
-            $request = $this->request->all();
             $query =  $request['query'];
             $variableValues = isset($data['variables']) ? $data['variables'] : null;
 
@@ -113,14 +114,15 @@ class GraphQLUserController extends BaseController
     /**
      * List Users via shorthand
      *
+     * @param mixed $request Request
+     *
      * @return json
      */
-    public function shorthandList()
+    public function shorthandList(Request $request)
     {
         try {
             $schema = BuildSchema::build(file_get_contents($this->schemaPath. 'user_schema.graphql'));
             $rootValue = $this->rootValueList();
-            $request = $this->request->all();
             $query =  $request['query'];
             $variableValues = isset($data['variables']) ? $data['variables'] : null;
 
@@ -154,15 +156,16 @@ class GraphQLUserController extends BaseController
     /**
      * Show User via shorthand
      *
+     * @param mixed $request Request
+     *
      * @return json
      */
-    public function shorthandShow()
+    public function shorthandShow(Request $request)
     {
         Log::info(__METHOD__);
         try {
             $schema = BuildSchema::build(file_get_contents($this->schemaPath. 'user_schema.graphql'));
             $rootValue = $this->rootValueShow();
-            $request = $this->request->all();
             $query =  $request['query'];
             $variableValues = isset($data['variables']) ? $data['variables'] : null;
 
@@ -196,15 +199,16 @@ class GraphQLUserController extends BaseController
     /**
      * Create a new User
      *
+     * @param mixed $request Request
+     *
      * @return json
      */
-    public function create()
+    public function create(Request $request)
     {
         Log::info(__METHOD__);
         try {
             $schema = BuildSchema::build(file_get_contents($this->schemaPath. 'user_schema.graphql'));
             $rootValue = $this->rootValueCreate();
-            $request = $this->request->all();
             $query =  $request['query'];
             $variableValues = isset($data['variables']) ? $data['variables'] : null;
 

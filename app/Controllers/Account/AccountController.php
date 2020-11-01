@@ -39,11 +39,12 @@ class AccountController extends BaseController
     /**
      * Create new account
      *
+     * @param mixed $request Request
+     *
      * @return array
      */
-    public function create()
+    public function create(Request $request)
     {
-        $request = $this->request->all();
         $accountInfo = $this->account->insert($request);
         return $accountInfo;
     }
@@ -51,12 +52,13 @@ class AccountController extends BaseController
     /**
      * Update account
      *
+     * @param mixed $request Request
+     *
      * @return boolean
      */
-    public function update()
+    public function update(Request $request)
     {
         try {
-            $request = $this->request->all();
             $this->account->where(['id', '=', 8])->update($request);
         } catch (\Exception $e) {
             echo $e->getMessage();
@@ -66,12 +68,13 @@ class AccountController extends BaseController
     /**
      * Delete account
      *
+     * @param mixed $request Request
+     *
      * @return boolean
      */
-    public function delete()
+    public function delete(Request $request)
     {
         try {
-            $request = $this->request->all();
             $this->account->where(['id', '=', $request['id']])->delete();
         } catch (\Exception $e) {
             echo $e->getMessage();

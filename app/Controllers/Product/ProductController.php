@@ -36,12 +36,12 @@ class ProductController extends BaseController
     /**
      * Create new product
      *
+     * @param mixed $request Request
+     *
      * @return void
      */
-    public function create()
+    public function create(Request $request)
     {
-        $request = $this->request->all();
-
         $product = new Product();
         $product->setName($request['name']);
         $entityManager = $this->getDoctrineEntityManager();
@@ -54,12 +54,13 @@ class ProductController extends BaseController
     /**
      * Update product
      *
+     * @param mixed $request Request
+     *
      * @return void
      */
-    public function update()
+    public function update(Request $request)
     {
         try {
-            $request = $this->request->all();
             $entityManager = $this->getDoctrineEntityManager();
             $product = $entityManager->find(Product::class, $request['id']);
             if ($product === null) {
@@ -77,12 +78,13 @@ class ProductController extends BaseController
     /**
      * Delete product
      *
+     * @param mixed $request Request
+     *
      * @return void
      */
-    public function delete()
+    public function delete(Request $request)
     {
         try {
-            $request = $this->request->all();
             $entityManager = $this->getDoctrineEntityManager();
             $product = $entityManager->find(Product::class, $request['id']);
             if ($product === null) {
