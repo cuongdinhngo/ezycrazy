@@ -93,17 +93,15 @@ class UserController extends BaseController
      */
     public function list()
     {
-        // $database = new Database();
-        // $database->enableQueryLog();
-        // $users = $database->table('users')->select(['id', 'fullname', 'email', 'thumb'])->where(['gender', '=', 'male'])->orWhere(['gender', '=', 'female'])->get();
-        // Log::info($database->getQueryLog());
+        /* Query Builder
+        $database = new Database();
+        $database->enableQueryLog();
+        $users = $database->table('users')->select(['id', 'fullname', 'email', 'thumb'])->where(['gender', '=', 'male'])->orWhere(['gender', '=', 'female'])->get();
+        Log::info($database->getQueryLog());
+        */
 
-        $params = [
-            'gender' => 'female',
-            'fullname' => 'ngo',
-        ];
         $this->user->enableQueryLog();
-        $users = $this->user->select(['id', 'fullname', 'email', 'thumb'])->filter($params)->get();
+        $users = $this->user->select(['id', 'fullname', 'email', 'thumb'])->get();
         Log::info($this->user->getQueryLog());
 
         $users = array_map(function ($user) {
@@ -113,6 +111,7 @@ class UserController extends BaseController
         if (isApi()) {
             return Response::toJson($users);
         }
+
         return template('admin', 'admin.users.list', compact('users'));
     }
 
@@ -132,19 +131,20 @@ class UserController extends BaseController
             'password' => 'required|min:6',
             'gender' => 'required|in_array:male,female',
         ];
-        Validator::execute($request, $rules);
+        $data = $request->all();
+        Validator::execute($data, $rules);
         if ($errors = Validator::errors()) {
             $old = Validator::getInput();
             return template('admin', 'admin.users.create', compact('errors', 'old'));
         }
 
-        $request = $this->transformRequest($request);
+        $request = $this->transformRequest($data);
 
         //encryt password
         $request['password'] = Token::generate([$request['password']], env('SECRET_KEY'));
         //insert user
         $this->user->enableQueryLog();
-        $newUser = $this->user->insert($request);
+        $newUser = $this->user->insert($data);
         Log::info($this->user->getQueryLog());
 
         //insert successfully
@@ -209,16 +209,13 @@ class UserController extends BaseController
      */
     public function updateForm(Request $request)
     {
-        $database = new Database();
-        $database->enableQueryLog();
-        $user = $database->table('users')->select()->where(['id', $request['id']])->first();
-        Log::info($database->getQueryLog());
+        $user = $this->user->select()->where(['id', $request['id']])->first();
         $template = [
             "header" => "admin.header",
             "content" => 'admin.users.update',
             "footer" => "admin.footer",
         ];
-        $html = $this->template->setTemplate($template)->setData($user[0])->render();
+        $html = $this->template->setTemplate($template)->setData($user->toArray())->render();
         echo $html;
         exit();
     }
@@ -232,7 +229,7 @@ class UserController extends BaseController
      */
     public function update(Request $request)
     {
-
+        $request = $request->all();
         //Check validation
         $rules = [
             'fullname' => 'required',
@@ -260,7 +257,7 @@ class UserController extends BaseController
      *
      * @return array
      */
-    public function transformRequest(array $request)
+    public function transformRequest($request)
     {
         if (false === empty($request['photo']['tmp_name'])) {
             $photo = $request['photo'];
@@ -273,5 +270,24 @@ class UserController extends BaseController
             unset($request['photo']);
         }
         return $request;
+    }
+
+    /**
+     * Show user's detail
+     *
+     * @param mixed $request Request
+     *
+     * @return [type] [description]
+     */
+    public function show(Request $request)
+    {
+        $this->user->enableQueryLog();
+        $user = $this->user->select(['id', 'fullname', 'email', 'thumb'])where(['id', $request->id])->get();
+        Log::info($this->user->getQueryLog());
+        if (isApi()) {
+            return Response::toJson($user);
+        }
+
+        return template('admin', 'admin.users.show', compact('user'));
     }
 }
