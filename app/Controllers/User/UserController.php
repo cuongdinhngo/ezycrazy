@@ -100,10 +100,6 @@ class UserController extends BaseController
         Log::info($database->getQueryLog());
         */
 
-        $params = [
-            'gender' => 'female',
-            'fullname' => 'ngo',
-        ];
         $this->user->enableQueryLog();
         $users = $this->user->select(['id', 'fullname', 'email', 'thumb'])->get();
         Log::info($this->user->getQueryLog());
