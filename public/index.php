@@ -8,6 +8,6 @@ use Atom\Http\Server;
 try {
     $server = new Server(['env']);
     $server->handle();
-} catch (Exception $e) {
+} catch (\Exception $e) {
     echo $e->getMessage();
 }

@@ -22,7 +22,7 @@ return [
         ['get' => 'User/UserController@createForm'],
         ['post' => 'User/UserController@create']
     ],
-    '/user/update' => [
+    '/user/update/{id}' => [
         ['get' => 'User/UserController@updateForm'],
         ['post' => 'User/UserController@update']
     ],
@@ -41,5 +41,8 @@ return [
     '/timereport/create' => [
         ['get' => 'TimeReportController@createForm'],
         ['post' => 'TimeReportController@create'],
+    ],
+    '/users/{uId}/skills/{sId}' => [
+        ['get' => 'User/UserController@test'],
     ],
 ];

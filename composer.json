@@ -14,7 +14,7 @@
     ],
     "homepage": "https://github.com/cuongnd88/ezycrazy",
     "require": {
-        "cuongnd88/atom": "1.1.9",
+        "cuongnd88/atom": "~2.0",
         "php": "^7.4",
         "predis/predis": "~1.1.1",
         "doctrine/orm": "^2.6.2",

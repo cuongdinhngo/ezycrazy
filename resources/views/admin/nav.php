@@ -14,12 +14,6 @@ $user = Auth::user();
                 <li class="nav-item">
                     <a class="nav-link" href="<?= url('users')?>">User <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= url('timereport')?>">List Time reports</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= url('timereport/create')?>">Create Time reports</a>
-                </li>
             </ul>
             <div class="form-inline my-2 my-lg-0">
                 <?= 'Welcome '. $user['fullname'] ?>
