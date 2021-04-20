@@ -275,6 +275,8 @@ class UserController extends BaseController
     /**
      * Show user's detail
      *
+     * @param mixed $request Request
+     *
      * @return [type] [description]
      */
     public function show(Request $request)
