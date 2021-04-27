@@ -1,6 +1,9 @@
 <?php
 
 return [
+    '/' => [
+        ['get' => 'AdminController@admin'],
+    ],
     '/export-users' => [
         ['get' => 'User/UserController@exportUsers'],
     ],
