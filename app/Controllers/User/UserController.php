@@ -209,6 +209,7 @@ class UserController extends BaseController
      */
     public function updateForm(Request $request)
     {
+        $this->user->enableQueryLog();
         $user = $this->user->select()->where(['id', $request['id']])->first();
         $template = [
             "header" => "admin.header",
@@ -217,6 +218,8 @@ class UserController extends BaseController
         ];
         $html = $this->template->setTemplate($template)->setData($user->toArray())->render();
         echo $html;
+
+        Log::debug($this->user->getQueryLog());
         exit();
     }
 
@@ -282,7 +285,7 @@ class UserController extends BaseController
     public function show(Request $request)
     {
         $this->user->enableQueryLog();
-        $user = $this->user->select(['id', 'fullname', 'email', 'thumb'])where(['id', $request->id])->get();
+        $user = $this->user->select(['id', 'fullname', 'email', 'thumb'])->where(['id', $request->id])->get();
         Log::info($this->user->getQueryLog());
         if (isApi()) {
             return Response::toJson($user);
